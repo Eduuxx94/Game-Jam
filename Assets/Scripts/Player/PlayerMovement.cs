@@ -7,13 +7,15 @@ public class PlayerMovement : MonoBehaviour
     private float timer = 0f;
     private float horizontal;
     private float speed = 8f;
-    private float jumpingPower = 16f;
+    private float jumpingPower = 18f;
     private bool isfacingRight = true;
     private bool fallDamage = false;
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
+    [SerializeField] private Transform waterCheck;
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private LayerMask waterLayer;
 
     private Health health;
     
@@ -34,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
             fallDamage = true;
         else
             fallDamage = false;
+
         if (IsGrounded())
         {
             if (fallDamage)
@@ -52,11 +55,28 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate() {
         if (timer <= 0)
-            rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+        {
+            if (IsWater())
+            {
+                if (rb.velocity.y < -8.0f)
+                    rb.velocity = new Vector2(horizontal * speed * 0.60f, -8.0f);
+                else if (rb.velocity.y > 13.0f)
+                    rb.velocity = new Vector2(horizontal * speed * 0.60f, 13.0f);
+                else
+                    rb.velocity = new Vector2(horizontal * speed * 0.60f, rb.velocity.y);
+            }
+            else
+                rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+        }
     }
 
     private bool IsGrounded() {
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+    }
+
+    private bool IsWater()
+    {
+        return Physics2D.OverlapCircle(waterCheck.position, 0.2f, waterLayer);
     }
 
     private void Flip() {
