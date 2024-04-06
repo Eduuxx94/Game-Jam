@@ -70,7 +70,7 @@ public class EnemyMovement : MonoBehaviour
 
     bool PlayerClose()
     {
-        if (Vector2.Distance (position, playerPos) < 15f)
+        if (Vector2.Distance (position, playerPos) < 10.0f)
         {
             if (position.x > playerPos.x)
                 direction = -1;
