@@ -25,23 +25,25 @@ public class Shooting : MonoBehaviour
         mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
         Vector3 rotation = mousePos - transform.position;
         float rotz = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0, 0, rotz);
+		if (!PauseMenu.isPaused)
+		{
+			transform.rotation = Quaternion.Euler(0, 0, rotz);
+			if (!canFire)
+			{
+				timer += Time.deltaTime;
+				if (timer > timeBetweenFiring)
+				{
+					canFire = true;
+					timer = 0f;
+				}
+			}
 
-        if (!canFire)
-        {
-            timer += Time.deltaTime;
-            if (timer > timeBetweenFiring)
-            {
-                canFire = true;
-                timer = 0f;
-            }
-        }
-
-        if (Input.GetMouseButton(0) && canFire && count > 0)
-        {
-            count--;
-            canFire = false;
-            Instantiate(bullet, bulletTransform.position, Quaternion.identity);
-        }
+			if (Input.GetMouseButton(0) && canFire && count > 0)
+			{
+				count--;
+				canFire = false;
+				Instantiate(bullet, bulletTransform.position, Quaternion.identity);
+			}
+		}
     }
 }
