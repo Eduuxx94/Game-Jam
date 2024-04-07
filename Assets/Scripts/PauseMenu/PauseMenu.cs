@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class PauseMenu : MonoBehaviour
 {
-    public  GameObject pauseMenu;
-    private GameObject instaPauseMenu;
-    public static bool isPaused = false;
+    public GameObject pauseMenu;
+    public static bool isPaused;
+
+	void Start()
+	{
+		pauseMenu.SetActive(false);
+		isPaused = false;
+	}
 
     void Update()
     {
@@ -21,18 +26,25 @@ public class PauseMenu : MonoBehaviour
 
     public void Resume()
     {
-        if (instaPauseMenu)
-            Destroy(instaPauseMenu);
+		Time.timeScale = 1f; // Resume time
+        pauseMenu.SetActive(false);
         isPaused = false;
-        Time.timeScale = 1f; // Resume time
+		Debug.Log("Resuming game...");
     }
+
+	public void	Resume_test()
+	{
+		Time.timeScale = 1f; // Resume time
+        pauseMenu.SetActive(false);
+        isPaused = false;
+		Debug.Log("Resuming game...");
+	}
 
     public void Pause()
     {
-        isPaused = true;
-        Time.timeScale = 0f; // Pause time
-        instaPauseMenu = Instantiate(pauseMenu);
-        instaPauseMenu.SetActive(true);
+		Time.timeScale = 0f; // Pause time
+		pauseMenu.SetActive(true);
+		isPaused = true;
     }
 
     public void Quit()
