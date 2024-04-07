@@ -84,6 +84,10 @@ public class PlayerMovement : MonoBehaviour
             isfacingRight = !isfacingRight;
             Vector3 localScale = transform.localScale;
             localScale.x *= -1f;
+            if (isfacingRight)
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+            else
+                transform.rotation = Quaternion.Euler(0, 180, 0);
         }
     }
 
