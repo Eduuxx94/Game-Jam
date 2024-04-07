@@ -9,7 +9,7 @@ public class EnemyMovement : MonoBehaviour
     public GameObject rightEdge;
 
     Rigidbody2D player;
-    Rigidbody2D rigidBody;
+    Rigidbody2D rigidbody;
 
     PlayerMovement damage;
 
@@ -28,7 +28,7 @@ public class EnemyMovement : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
         damage = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
-        rigidBody = GetComponent<Rigidbody2D>();
+        rigidbody = GetComponent<Rigidbody2D>();
         left = leftEdge.transform.position;
         right = rightEdge.transform.position;
     }
@@ -37,7 +37,7 @@ public class EnemyMovement : MonoBehaviour
     void Update()
     {
         stopTimer -= Time.deltaTime;
-        position = rigidBody.position;
+        position = rigidbody.position;
         if (player != null)
             playerPos = player.position;
         if (speed == 0)
@@ -53,15 +53,20 @@ public class EnemyMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (stopTimer <= 0)
-            rigidBody.velocity = new Vector2 (direction * speed, rigidBody.velocity.y);
+        if (stopTimer <= 0) {
+            if (direction > 0)
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+            else
+                transform.rotation = Quaternion.Euler(0, 180, 0);
+            rigidbody.velocity = new Vector2 (direction * speed, rigidbody.velocity.y);
+        }
     }
 
     void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject != platform)
         {
-            rigidBody.velocity = new Vector2 (direction * -1.5f * maxSpeed, rigidBody.velocity.y);
+            rigidbody.velocity = new Vector2 (direction * -1.5f * maxSpeed, rigidbody.velocity.y);
             stopTimer = 0.5f;
         }
         if (other.rigidbody == player)
