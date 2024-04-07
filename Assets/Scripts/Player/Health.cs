@@ -9,6 +9,7 @@ public class Health : MonoBehaviour
     public int maxHealth = 3;
     int currentHealth;
     public int health { get { return currentHealth; }}
+	public static bool death_flag = false;
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +31,10 @@ public class Health : MonoBehaviour
             currentHealth--;
             Debug.Log (currentHealth + "/" + maxHealth);
             if (currentHealth == 0)
-                Destroy(gameObject);
+			{
+				death_flag = true;
+				Destroy(gameObject);
+			}
             timer = timerMax;
         }
     }
