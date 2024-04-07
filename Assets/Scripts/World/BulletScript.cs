@@ -7,6 +7,7 @@ public class BulletScript : MonoBehaviour
     private Vector3 mousePos;
     private Camera mainCam;
     private Rigidbody2D rb;
+    public float timer;
     public float force;
 
     // Start is called before the first frame update
@@ -26,6 +27,17 @@ public class BulletScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        timer -= Time.deltaTime;
+        if (timer <= 0)
+            Destroy(gameObject);
+    }
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Enemy")
+        {
+            Destroy(other.gameObject);
+        }
+        Destroy(gameObject);
     }
 }
