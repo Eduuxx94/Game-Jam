@@ -10747,6 +10747,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5613594139863519020, guid: ca28c469ab9b49b40bc4d5420db363c8, type: 3}
   m_PrefabInstance: {fileID: 222198249}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &498269641 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8674117144713245669, guid: 46c9fb2174f41b54b9fb1c002fdfd157, type: 3}
+  m_PrefabInstance: {fileID: 2139410906}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &547989678
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -84385,6 +84390,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8033294009013778387, guid: 46c9fb2174f41b54b9fb1c002fdfd157, type: 3}
+      propertyPath: bulletTransform
+      value: 
+      objectReference: {fileID: 498269641}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
