@@ -5,32 +5,24 @@ using UnityEngine.UIElements;
 
 public class UIScript : MonoBehaviour
 {
-    GameObject player;
-
     private Health health;
-    private Shooting collect;
 
     VisualElement light1;
     VisualElement light2;
     VisualElement light3;
     Label start;
-    Label counter;
 
     float timer = 2f;
-    int count;
 
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<GameObject>();
-        health = player.GetComponent<Health>();
-        collect = player.GetComponent<Shooting>();
+        health = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
         UIDocument ui = GetComponent<UIDocument>();
         light1 = ui.rootVisualElement.Q<VisualElement>("Light1");
         light2 = ui.rootVisualElement.Q<VisualElement>("Light2");
         light3 = ui.rootVisualElement.Q<VisualElement>("Light3");
         start = ui.rootVisualElement.Q<Label>("StartMessage");
-        counter = ui.rootVisualElement.Q<Label>("Counter");
     }
 
     // Update is called once per frame
@@ -43,7 +35,6 @@ public class UIScript : MonoBehaviour
             start.visible = false;
             timer = 0f;
         }
-        counter.text = collect.count.ToString();
         if (health != null)
         {
             if (health.health < 3)
