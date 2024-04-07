@@ -9,7 +9,7 @@ public class EnemyMovement : MonoBehaviour
     public GameObject rightEdge;
 
     Rigidbody2D player;
-    Rigidbody2D rigidbody;
+    Rigidbody2D rigidBody;
 
     PlayerMovement damage;
 
@@ -28,7 +28,7 @@ public class EnemyMovement : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
         damage = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
-        rigidbody = GetComponent<Rigidbody2D>();
+        rigidBody = GetComponent<Rigidbody2D>();
         left = leftEdge.transform.position;
         right = rightEdge.transform.position;
     }
@@ -37,7 +37,7 @@ public class EnemyMovement : MonoBehaviour
     void Update()
     {
         stopTimer -= Time.deltaTime;
-        position = rigidbody.position;
+        position = rigidBody.position;
         if (player != null)
             playerPos = player.position;
         if (speed == 0)
@@ -54,14 +54,14 @@ public class EnemyMovement : MonoBehaviour
     void FixedUpdate()
     {
         if (stopTimer <= 0)
-            rigidbody.velocity = new Vector2 (direction * speed, rigidbody.velocity.y);
+            rigidBody.velocity = new Vector2 (direction * speed, rigidBody.velocity.y);
     }
 
     void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject != platform)
         {
-            rigidbody.velocity = new Vector2 (direction * -1.5f * maxSpeed, rigidbody.velocity.y);
+            rigidBody.velocity = new Vector2 (direction * -1.5f * maxSpeed, rigidBody.velocity.y);
             stopTimer = 0.5f;
         }
         if (other.rigidbody == player)
