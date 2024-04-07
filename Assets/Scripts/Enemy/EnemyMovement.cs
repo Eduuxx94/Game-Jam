@@ -53,8 +53,13 @@ public class EnemyMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (stopTimer <= 0)
+        if (stopTimer <= 0) {
+            if (direction > 0)
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+            else
+                transform.rotation = Quaternion.Euler(0, 180, 0);
             rigidbody.velocity = new Vector2 (direction * speed, rigidbody.velocity.y);
+        }
     }
 
     void OnCollisionEnter2D(Collision2D other)
