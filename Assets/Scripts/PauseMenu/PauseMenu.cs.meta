@@ -4,7 +4,7 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - pauseMenu: {fileID: 1079028454566869852, guid: 6a592326fe8c3454681eceace49db3fc, type: 3}
+  - pauseMenu: {fileID: 8367843521705322096, guid: 0bb3243dab450905fb540a9becef795a, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
