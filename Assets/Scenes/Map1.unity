@@ -10950,7 +10950,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3681d1080a0884f5d91b5bb5ed08d667, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1294518869}
+  target: {fileID: 1434166274899139849}
 --- !u!82 &1202782647
 AudioSource:
   m_ObjectHideFlags: 0
@@ -11047,11 +11047,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!4 &1294518869 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1434166273682541779, guid: 46c9fb2174f41b54b9fb1c002fdfd157, type: 3}
-  m_PrefabInstance: {fileID: 2139410906}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1560026923
 GameObject:
   m_ObjectHideFlags: 0
@@ -84301,18 +84296,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2150435550308411364, guid: 46c9fb2174f41b54b9fb1c002fdfd157, type: 3}
-      propertyPath: waterLayer.m_Bits
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 2502458277488168414, guid: 46c9fb2174f41b54b9fb1c002fdfd157, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2502458277488168414, guid: 46c9fb2174f41b54b9fb1c002fdfd157, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3119197663262175394, guid: 46c9fb2174f41b54b9fb1c002fdfd157, type: 3}
       propertyPath: m_Name
       value: Player
@@ -84322,6 +84305,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46c9fb2174f41b54b9fb1c002fdfd157, type: 3}
+--- !u!4 &1434166274899139849 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1434166273682541779, guid: 46c9fb2174f41b54b9fb1c002fdfd157, type: 3}
+  m_PrefabInstance: {fileID: 2139410906}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
